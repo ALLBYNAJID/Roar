@@ -1,7 +1,13 @@
-// api/playlist.js
 export default async function handler(req, res) {
   try {
-    const response = await fetch("https://tv.roarzone.info/app.php?per=true");
+    // Option 1: Direct fetch with User-Agent header
+    // const response = await fetch("https://tv.roarzone.info/app.php?per=true", {
+    //   headers: { "User-Agent": "Mozilla/5.0 (compatible; VercelFetch/1.0)" }
+    // });
+
+    // Option 2: Fetch through CORS proxy (temporary, for testing)
+    const response = await fetch("https://cors-anywhere.herokuapp.com/https://tv.roarzone.info/app.php?per=true");
+
     if (!response.ok) {
       throw new Error(`Failed to fetch JSON: ${response.status}`);
     }
