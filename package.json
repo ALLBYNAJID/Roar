@@ -1,10 +1,6 @@
 {
-  "name": "roar",
+  "name": "roar-playlist",
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
-  "scripts": {
-    "start": "node api/playlist.js"
-  },
   "dependencies": {}
 }
