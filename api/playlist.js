@@ -1,6 +1,7 @@
+// api/playlist.js
 export default async function handler(req, res) {
   try {
-    const response = await fetch("http://tv.roarzone.info/app.php?per=true");
+    const response = await fetch("https://tv.roarzone.info/app.php?per=true");
     if (!response.ok) {
       throw new Error(`Failed to fetch JSON: ${response.status}`);
     }
@@ -10,7 +11,9 @@ export default async function handler(req, res) {
 
     data.forEach((item) => {
       if (item.active === "1") {
-        const logo = item.img_url && item.img_url.startsWith('http') ? item.img_url : `http://tv.roarzone.info${item.img_url || ''}`;
+        const logo = item.img_url && item.img_url.startsWith('http')
+          ? item.img_url
+          : `https://tv.roarzone.info${item.img_url || ''}`;
         const name = item.ch_name || 'Unknown';
         const tvgId = item.ch_id || '';
         const url = item.ch_url || '';
@@ -23,7 +26,7 @@ export default async function handler(req, res) {
     res.setHeader("Content-Type", "application/x-mpegURL");
     res.status(200).send(m3u);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
+    console.error("Fetch error:", error);
+    res.status(500).json({ error: error.message || "Fetch failed" });
   }
 }
