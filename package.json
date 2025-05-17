@@ -1,12 +1,10 @@
 {
-  "name": "roarzone-playlist",
+  "name": "roar",
   "version": "1.0.0",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
+    "start": "node api/playlist.js"
   },
-  "dependencies": {
-    "node-fetch": "^3.3.2"
-  }
+  "dependencies": {}
 }
