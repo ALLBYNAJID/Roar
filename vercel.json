@@ -1,0 +1,8 @@
+{
+  "routes": [
+    {
+      "src": "/playlist.m3u",
+      "dest": "/api/playlist.js"
+    }
+  ]
+}
